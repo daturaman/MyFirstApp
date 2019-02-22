@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My First App</string>
+    <string name="address_found">My First App</string>
+    <string name="no_address_found">arse</string>
+    <string name="service_not_available">balls</string>
+    <string name="invalid_lat_long_used">Invalid coordinates!</string>
+</resources>
