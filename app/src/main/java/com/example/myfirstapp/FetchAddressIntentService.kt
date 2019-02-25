@@ -6,11 +6,15 @@ import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.os.Bundle
+import android.os.ResultReceiver
 import android.util.Log
 import java.io.IOException
 import java.util.*
 
 class FetchAddressIntentService : IntentService("fetchAddressIntentService") {
+
+    private var receiver: ResultReceiver? = null
 
     object Constants {
         const val SUCCESS_RESULT = 0
@@ -75,7 +79,8 @@ class FetchAddressIntentService : IntentService("fetchAddressIntentService") {
         }
     }
 
-    private fun deliverResultToReceiver(failurE_RESULT: Int, errorMessage: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private fun deliverResultToReceiver(resultCode: Int, message: String) {
+        val bundle = Bundle().apply { putString(Constants.RESULT_DATA_KEY, message) }
+        receiver?.send(resultCode, bundle)
     }
 }
